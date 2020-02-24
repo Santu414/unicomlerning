@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
 const ConferenceSchema = new mongoose.Schema({
-  awardName: {
+  conferenceName: {
     type: String,
     required: true
   },
-  images: {
-    type: String,
-    required: true
-  },
+  // images: {
+  //   type: String,
+  //   required: true
+  // },
   city: {
     type: String,
     required: true
