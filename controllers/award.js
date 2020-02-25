@@ -1,5 +1,6 @@
 const { check, validationResult } = require("express-validator");
 const Award = require("../models/Awards");
+
 // @ Desc       Get all Award
 // @ route      GET /api/v1/awards
 // @ access     Public
@@ -44,7 +45,16 @@ exports.CreateAward = async (req, res, next) => {
     return res.status(400).json({ errors: errors.array() });
   }
   try {
-    const award = await Award.create(req.body);
+    const award = new Award({
+      awardName: req.body.awardName,
+      image: req.file.image,
+      city: req.body.city,
+      country: req.body.country,
+      from: req.body.from,
+      to: req.body.to
+    });
+
+    await award.save();
     res.status(201).json({ success: true, data: award });
   } catch (err) {
     console.error(err.message);

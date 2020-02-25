@@ -11,9 +11,12 @@ const AwardRoutes = require("./routes/api/award");
 const ConferenceRoutes = require("./routes/api/conference");
 const TrainingRoutes = require("./routes/api/training");
 const ContestRoutes = require("./routes/api/contest");
+//Static folder
+app.use("/uploads", express.static("uploads"));
 
 //Initiate middleware
-app.use(express.json({ extended: false }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 //Congigure the routes
 app.use("/api/v1/awards", AwardRoutes);
